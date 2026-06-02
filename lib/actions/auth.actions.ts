@@ -7,7 +7,6 @@ import {headers} from "next/headers";
 export const signUpWithEmail = async ({ email, password, fullName, country, investmentGoals, riskTolerance, preferredIndustry }: SignUpFormData) => {
     try {
         const response = await auth.api.signUpEmail({ body: { email, password, name: fullName } })
-
         if(response) {
             await inngest.send({
                 name: 'app/user.created',
@@ -25,7 +24,6 @@ export const signUpWithEmail = async ({ email, password, fullName, country, inve
 export const signInWithEmail = async ({ email, password }: SignInFormData) => {
     try {
         const response = await auth.api.signInEmail({ body: { email, password } })
-
         return { success: true, data: response }
     } catch (e) {
         console.log('Sign in failed', e)
