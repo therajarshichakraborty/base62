@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Signalist",
-  description: "Track real-time stock prices, get personalized alerts and explore detailed company insights.",
+  title: "Stockify - AI Stock Market Platform",
+  description: "Track real-time stock prices, get AI-powered predictions, personalized alerts, and company insights.",
 };
 
 export default function RootLayout({
