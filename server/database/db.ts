@@ -1,10 +1,13 @@
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
+
 import { drizzle } from 'drizzle-orm/node-postgres';
 
-const db = drizzle({ 
-  connection: { 
-    connectionString: process.env.DATABASE_URL as string,
-    ssl: true
-  }
+const db = drizzle({
+    connection: {
+        connectionString: process.env.DATABASE_URL as string,
+        ssl: true,
+    },
 });
+
+export default db;
