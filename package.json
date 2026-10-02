@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
+    "@hookform/resolvers": "^5.9.1",
     "@mikro-orm/core": "^7.2.3",
     "@mikro-orm/postgresql": "^7.2.3",
     "@shadcn/react": "^0.3.1",
@@ -32,6 +33,7 @@
     "dotenv": "^18.0.5",
     "drizzle-orm": "^1.0.0-rc.4",
     "embla-carousel-react": "^8.6.0",
+    "format": "^0.2.2",
     "input-otp": "^1.5.0",
     "lucide-react": "^1.48.0",
     "nanoid": "^6.0.1",
