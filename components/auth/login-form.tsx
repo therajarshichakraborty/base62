@@ -91,7 +91,7 @@ export function LoginForm() {
   };
 
   return (
-    <div className="space-y-4" style={{ border: "none", outline: "none" }}>
+    <div className="space-y-4 bg-transparent" style={{ background: "transparent", border: "none", outline: "none" }}>
       {/* Social login buttons */}
       <div className="grid grid-cols-2 gap-2">
         <Button

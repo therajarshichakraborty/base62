@@ -27,7 +27,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         </div>
       </div>
 
-      <main className="w-full max-w-sm">
+      <main className="w-full max-w-sm bg-transparent" style={{ background: "transparent" }}>
         {children}
       </main>
     </div>

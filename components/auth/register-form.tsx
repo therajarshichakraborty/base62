@@ -79,7 +79,7 @@ export function RegisterForm() {
   }
 
   return (
-    <div className="space-y-4" style={{ border: "none", outline: "none" }}>
+    <div className="space-y-4 bg-transparent" style={{ background: "transparent", border: "none", outline: "none" }}>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3" style={{ border: "none", outline: "none" }}>
           <FormField
