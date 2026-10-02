@@ -1,15 +1,13 @@
-import { MikroORM } from "@mikro-orm/postgresql";
-import config from "./mikro-orm.config";
-import { env } from "./env";
+import { MikroORM } from '@mikro-orm/postgresql';
+import config from './mikro-orm.config';
+import { env } from './env';
 
 const globalForOrm = globalThis as unknown as {
-  orm: MikroORM | undefined;
+    orm: MikroORM | undefined;
 };
 
-export const orm =
-  globalForOrm.orm ??
-  (await MikroORM.init(config));
+export const orm = globalForOrm.orm ?? (await MikroORM.init(config));
 
-if (env.NODE_ENV !== "production") {
-  globalForOrm.orm = orm;
+if (env.NODE_ENV !== 'production') {
+    globalForOrm.orm = orm;
 }

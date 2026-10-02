@@ -1,15 +1,16 @@
 import { defineEntity, p } from '@mikro-orm/core';
 
-export const User = defineEntity({
-    name: 'User',
+export const Urls = defineEntity({
+    name: 'Urls',
     properties: {
         id: p.integer().primary().autoincrement(),
-        email: p.string().unique(),
-        name: p.string(),
+        originalUrl: p.string(),
+        shortCode: p.string().unique(),
         createdAt: p.datetime().onCreate(() => new Date()),
         updatedAt: p
             .datetime()
             .onCreate(() => new Date())
             .onUpdate(() => new Date()),
+        clicks: p.integer().default(0),
     },
 });
