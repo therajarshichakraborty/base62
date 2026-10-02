@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -8,18 +9,22 @@ interface AuthLayoutProps {
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-black text-white px-4 py-12">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background text-foreground px-4 py-12 transition-colors duration-150">
       <div className="w-full max-w-sm mb-6 flex items-center justify-between">
         <Link
           href="/"
-          className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-white transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="size-3.5" />
           <span>Home</span>
         </Link>
-        <Link href="/" className="font-semibold text-sm tracking-tight text-white">
-          base62
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link href="/" className="font-semibold text-sm tracking-tight text-foreground">
+            base62
+          </Link>
+          <div className="h-3 w-px bg-border" />
+          <ThemeToggle />
+        </div>
       </div>
 
       <main className="w-full max-w-sm">

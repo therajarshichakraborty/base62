@@ -84,11 +84,11 @@ export function UrlShortenerForm() {
                     <Input
                       placeholder="https://example.com/very-long-url"
                       disabled={isLoading}
-                      className="h-10 rounded-lg border-zinc-800 bg-zinc-950 px-3.5 text-sm text-white placeholder:text-zinc-500 focus-visible:ring-1 focus-visible:ring-zinc-600 focus-visible:border-zinc-600"
+                      className="h-10 rounded-lg border-border bg-muted/20 px-3.5 text-sm text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-foreground/30 focus-visible:border-foreground/30"
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className="pt-1.5 text-xs text-red-400" />
+                  <FormMessage className="pt-1.5 text-xs text-destructive" />
                 </FormItem>
               )}
             />
@@ -96,7 +96,7 @@ export function UrlShortenerForm() {
             <Button
               type="submit"
               disabled={isLoading}
-              className="h-10 px-5 rounded-lg bg-white hover:bg-zinc-200 text-black text-xs font-medium transition-colors shrink-0 disabled:opacity-50"
+              className="h-10 px-5 rounded-lg bg-foreground hover:bg-foreground/90 text-background text-xs font-medium transition-colors shrink-0 disabled:opacity-50"
             >
               {isLoading ? "Shortening..." : "Shorten"}
             </Button>
@@ -106,8 +106,8 @@ export function UrlShortenerForm() {
 
       {/* Result Container */}
       {shortUrl && (
-        <div className="flex items-center justify-between gap-3 rounded-lg border border-zinc-800 bg-zinc-950 px-3.5 py-3">
-          <p className="truncate font-mono text-sm text-zinc-200 select-all">
+        <div className="flex items-center justify-between gap-3 rounded-lg border border-border bg-card px-3.5 py-3 shadow-sm">
+          <p className="truncate font-mono text-sm text-foreground select-all">
             {shortUrl}
           </p>
 
@@ -115,16 +115,16 @@ export function UrlShortenerForm() {
             <Button
               type="button"
               onClick={handleCopy}
-              className="h-8 px-3 rounded-md bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-xs font-medium text-white transition-colors"
+              className="h-8 px-3 rounded-md bg-muted hover:bg-muted/80 text-xs font-medium text-foreground transition-colors border border-border"
             >
               {copied ? (
                 <>
-                  <Check className="mr-1.5 size-3.5 text-zinc-300" />
+                  <Check className="mr-1.5 size-3.5 text-foreground" />
                   Copied
                 </>
               ) : (
                 <>
-                  <Copy className="mr-1.5 size-3.5 text-zinc-400" />
+                  <Copy className="mr-1.5 size-3.5 text-muted-foreground" />
                   Copy
                 </>
               )}
@@ -135,7 +135,7 @@ export function UrlShortenerForm() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Open shortened link"
-              className="size-8 inline-flex items-center justify-center rounded-md border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors"
+              className="size-8 inline-flex items-center justify-center rounded-md border border-border bg-muted/50 hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
             >
               <ExternalLink className="size-3.5" />
             </a>
@@ -145,7 +145,7 @@ export function UrlShortenerForm() {
               variant="ghost"
               onClick={handleReset}
               aria-label="Shorten another URL"
-              className="size-8 p-0 rounded-md text-zinc-500 hover:text-zinc-300 hover:bg-zinc-900"
+              className="size-8 p-0 rounded-md text-muted-foreground hover:text-foreground hover:bg-muted"
             >
               <RotateCcw className="size-3.5" />
             </Button>
