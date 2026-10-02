@@ -22,7 +22,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           <Link href="/" className="font-semibold text-sm tracking-tight text-foreground">
             base62
           </Link>
-          <div className="h-3 w-px bg-border" />
+          <div className="h-3 w-px bg-neutral-200 dark:bg-neutral-800" />
           <ThemeToggle />
         </div>
       </div>

@@ -87,13 +87,13 @@ export function RegisterForm() {
             name="name"
             render={({ field }) => (
               <FormItem className="space-y-1">
-                <FormLabel className="text-xs text-muted-foreground">Name</FormLabel>
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">Name</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Jane Doe"
                     autoComplete="name"
                     disabled={isLoading}
-                    className="h-9 rounded-lg border-border bg-muted/20 px-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-foreground/30 focus-visible:border-foreground/30"
+                    className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
                     {...field}
                   />
                 </FormControl>
@@ -107,14 +107,14 @@ export function RegisterForm() {
             name="email"
             render={({ field }) => (
               <FormItem className="space-y-1">
-                <FormLabel className="text-xs text-muted-foreground">Email</FormLabel>
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">Email</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="name@example.com"
                     type="email"
                     autoComplete="email"
                     disabled={isLoading}
-                    className="h-9 rounded-lg border-border bg-muted/20 px-3 text-sm text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-foreground/30 focus-visible:border-foreground/30"
+                    className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
                     {...field}
                   />
                 </FormControl>
@@ -128,7 +128,7 @@ export function RegisterForm() {
             name="password"
             render={({ field }) => (
               <FormItem className="space-y-1">
-                <FormLabel className="text-xs text-muted-foreground">Password</FormLabel>
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">Password</FormLabel>
                 <FormControl>
                   <div className="relative">
                     <Input
@@ -136,14 +136,14 @@ export function RegisterForm() {
                       type={showPassword ? "text" : "password"}
                       autoComplete="new-password"
                       disabled={isLoading}
-                      className="h-9 rounded-lg border-border bg-muted/20 pl-3 pr-8 text-sm text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-foreground/30 focus-visible:border-foreground/30"
+                      className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
                       {...field}
                     />
                     <button
                       type="button"
                       tabIndex={-1}
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white"
                     >
                       {showPassword ? (
                         <EyeOff className="size-3.5" />
@@ -163,7 +163,7 @@ export function RegisterForm() {
             name="confirmPassword"
             render={({ field }) => (
               <FormItem className="space-y-1">
-                <FormLabel className="text-xs text-muted-foreground">
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">
                   Confirm Password
                 </FormLabel>
                 <FormControl>
@@ -173,7 +173,7 @@ export function RegisterForm() {
                       type={showConfirmPassword ? "text" : "password"}
                       autoComplete="new-password"
                       disabled={isLoading}
-                      className="h-9 rounded-lg border-border bg-muted/20 pl-3 pr-8 text-sm text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-foreground/30 focus-visible:border-foreground/30"
+                      className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
                       {...field}
                     />
                     <button
@@ -182,7 +182,7 @@ export function RegisterForm() {
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white"
                     >
                       {showConfirmPassword ? (
                         <EyeOff className="size-3.5" />
@@ -204,18 +204,18 @@ export function RegisterForm() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full h-9 mt-1 rounded-lg bg-foreground hover:bg-foreground/90 text-background text-xs font-medium transition-colors disabled:opacity-50"
+            className="w-full h-9 mt-1 rounded-lg border-0 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-medium transition-colors disabled:opacity-50 cursor-pointer"
           >
             {isLoading ? "Creating account..." : "Create account"}
           </Button>
         </form>
       </Form>
 
-      <div className="pt-2 text-center text-xs text-muted-foreground">
+      <div className="pt-2 text-center text-xs text-neutral-500 dark:text-neutral-400">
         Already have an account?{" "}
         <Link
           href="/login"
-          className="text-foreground hover:underline transition-colors"
+          className="text-black dark:text-white hover:underline transition-colors font-medium"
         >
           Sign in
         </Link>
