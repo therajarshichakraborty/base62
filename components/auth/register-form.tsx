@@ -1,0 +1,232 @@
+"use client";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../urls/form";
+import { Input } from "../ui/input";
+import { Eye, EyeOff } from "lucide-react";
+import { registerUser } from "@/server/actions/auth/register";
+import { toast } from "sonner";
+
+const registerSchema = z
+  .object({
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Invalid email address"),
+    password: z.string().min(6, "Password must be at least 6 characters"),
+    confirmPassword: z.string().min(6, "Confirm password is required"),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords do not match",
+    path: ["confirmPassword"],
+  });
+
+type RegisterFormValues = z.infer<typeof registerSchema>;
+
+export function RegisterForm() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const form = useForm<RegisterFormValues>({
+    resolver: zodResolver(registerSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
+
+  async function onSubmit(data: RegisterFormValues) {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("password", data.password);
+
+      const response = await registerUser(formData);
+
+      if (!response.success) {
+        setError(response.error || "An error occurred");
+        toast.error(response.error || "Failed to create account");
+        return;
+      }
+
+      toast.success("Account created successfully");
+      router.push("/login?registered=true");
+    } catch {
+      setError("An unexpected error occurred");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return (
+    <div className="space-y-4 bg-transparent" style={{ background: "transparent", border: "none", outline: "none" }}>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3" style={{ border: "none", outline: "none" }}>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">Name</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Jane Doe"
+                    autoComplete="name"
+                    disabled={isLoading}
+                    style={{ border: "none", outline: "none", boxShadow: "none" }}
+                    className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-destructive" />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">Email</FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="name@example.com"
+                    type="email"
+                    autoComplete="email"
+                    disabled={isLoading}
+                    style={{ border: "none", outline: "none", boxShadow: "none" }}
+                    className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage className="text-xs text-destructive" />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">Password</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Input
+                      placeholder="••••••••"
+                      type={showPassword ? "text" : "password"}
+                      autoComplete="new-password"
+                      disabled={isLoading}
+                      style={{ border: "none", outline: "none", boxShadow: "none" }}
+                      className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
+                      {...field}
+                    />
+                    <button
+                      type="button"
+                      tabIndex={-1}
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{ border: "none", outline: "none", background: "none" }}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer"
+                    >
+                      {showPassword ? (
+                        <EyeOff className="size-3.5" />
+                      ) : (
+                        <Eye className="size-3.5" />
+                      )}
+                    </button>
+                  </div>
+                </FormControl>
+                <FormMessage className="text-xs text-destructive" />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem className="space-y-1">
+                <FormLabel className="text-xs text-neutral-500 dark:text-neutral-400">
+                  Confirm Password
+                </FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Input
+                      placeholder="••••••••"
+                      type={showConfirmPassword ? "text" : "password"}
+                      autoComplete="new-password"
+                      disabled={isLoading}
+                      style={{ border: "none", outline: "none", boxShadow: "none" }}
+                      className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
+                      {...field}
+                    />
+                    <button
+                      type="button"
+                      tabIndex={-1}
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                      style={{ border: "none", outline: "none", background: "none" }}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer"
+                    >
+                      {showConfirmPassword ? (
+                        <EyeOff className="size-3.5" />
+                      ) : (
+                        <Eye className="size-3.5" />
+                      )}
+                    </button>
+                  </div>
+                </FormControl>
+                <FormMessage className="text-xs text-destructive" />
+              </FormItem>
+            )}
+          />
+
+          {error && (
+            <p className="text-xs text-destructive pt-0.5">{error}</p>
+          )}
+
+          <Button
+            type="submit"
+            disabled={isLoading}
+            style={{ border: "none", outline: "none", boxShadow: "none" }}
+            className="w-full h-9 mt-1 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-medium transition-colors disabled:opacity-50 cursor-pointer"
+          >
+            {isLoading ? "Creating account..." : "Create account"}
+          </Button>
+        </form>
+      </Form>
+
+      <div className="pt-2 text-center text-xs text-neutral-500 dark:text-neutral-400">
+        Already have an account?{" "}
+        <Link
+          href="/login"
+          className="text-black dark:text-white hover:underline transition-colors font-medium"
+        >
+          Sign in
+        </Link>
+      </div>
+    </div>
+  );
+}
