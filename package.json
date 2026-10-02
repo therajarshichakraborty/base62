@@ -4,7 +4,7 @@
   "private": true,
   "description": "A clever nod to the base-62 encoding mechanism typically used to generate unique short IDs",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 10000",
     "build": "next build",
     "start": "next start",
     "format": "prettier --write \"**/*.ts\"",
