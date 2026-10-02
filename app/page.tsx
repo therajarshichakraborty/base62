@@ -1,28 +1,46 @@
+import Link from "next/link";
 import { UrlShortenerForm } from "@/components/urls/url-shortner-form";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/urls/form";
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col items-center justify-center p-6 md:p-24">
-      <div className="w-full max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-          Shorten Your Links
+    <div className="min-h-screen flex flex-col justify-between bg-black text-white px-4 py-8 sm:px-6 lg:px-8">
+      {/* Top minimal bar */}
+      <header className="w-full max-w-xl mx-auto flex items-center justify-between">
+        <Link href="/" className="font-semibold text-sm tracking-tight text-white">
+          base62
+        </Link>
+        <div className="flex items-center gap-4 text-xs">
+          <Link
+            href="/login"
+            className="text-zinc-400 hover:text-white transition-colors"
+          >
+            Sign in
+          </Link>
+          <Link
+            href="/register"
+            className="text-white hover:text-zinc-300 font-medium transition-colors"
+          >
+            Register
+          </Link>
+        </div>
+      </header>
+
+      {/* Main hero shortener */}
+      <main className="w-full max-w-xl mx-auto my-auto py-16 text-center">
+        <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-white mb-2">
+          Shorten links
         </h1>
-        <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Paste your long URL and get a shortened one. It's free and easy to
-          use.
+        <p className="text-sm text-zinc-400 mb-8 max-w-md mx-auto">
+          Paste a long URL to generate a clean, minimal short link.
         </p>
 
         <UrlShortenerForm />
-      </div>
+      </main>
+
+      {/* Minimal footer */}
+      <footer className="w-full max-w-xl mx-auto text-center text-xs text-zinc-600 py-4">
+        <span>base62 url shortener</span>
+      </footer>
     </div>
   );
 }
