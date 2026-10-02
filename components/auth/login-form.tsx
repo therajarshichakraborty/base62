@@ -21,7 +21,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { toast } from "sonner";
 
 const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  email: z.email("Invalid email address"),
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
@@ -92,7 +92,6 @@ export function LoginForm() {
 
   return (
     <div className="space-y-4 bg-transparent" style={{ background: "transparent", border: "none", outline: "none" }}>
-      {/* Social login buttons */}
       <div className="grid grid-cols-2 gap-2">
         <Button
           type="button"

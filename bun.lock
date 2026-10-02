@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "url-shortner",
+      "name": "base62-url-shortner",
       "dependencies": {
         "@base-ui/react": "^1.8.0",
         "@hookform/resolvers": "^5.9.1",
