@@ -79,9 +79,9 @@ export function RegisterForm() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4" style={{ border: "none", outline: "none" }}>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-3" style={{ border: "none", outline: "none" }}>
           <FormField
             control={form.control}
             name="name"
@@ -93,7 +93,8 @@ export function RegisterForm() {
                     placeholder="Jane Doe"
                     autoComplete="name"
                     disabled={isLoading}
-                    className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
+                    style={{ border: "none", outline: "none", boxShadow: "none" }}
+                    className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
                     {...field}
                   />
                 </FormControl>
@@ -114,7 +115,8 @@ export function RegisterForm() {
                     type="email"
                     autoComplete="email"
                     disabled={isLoading}
-                    className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
+                    style={{ border: "none", outline: "none", boxShadow: "none" }}
+                    className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] px-3 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
                     {...field}
                   />
                 </FormControl>
@@ -136,14 +138,16 @@ export function RegisterForm() {
                       type={showPassword ? "text" : "password"}
                       autoComplete="new-password"
                       disabled={isLoading}
-                      className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
+                      style={{ border: "none", outline: "none", boxShadow: "none" }}
+                      className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
                       {...field}
                     />
                     <button
                       type="button"
                       tabIndex={-1}
                       onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white"
+                      style={{ border: "none", outline: "none", background: "none" }}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer"
                     >
                       {showPassword ? (
                         <EyeOff className="size-3.5" />
@@ -173,7 +177,8 @@ export function RegisterForm() {
                       type={showConfirmPassword ? "text" : "password"}
                       autoComplete="new-password"
                       disabled={isLoading}
-                      className="h-9 rounded-lg border-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus-visible:ring-1 focus-visible:ring-neutral-400 dark:focus-visible:ring-neutral-700"
+                      style={{ border: "none", outline: "none", boxShadow: "none" }}
+                      className="h-9 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-neutral-100 dark:bg-[#141414] pl-3 pr-8 text-sm text-black dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500"
                       {...field}
                     />
                     <button
@@ -182,7 +187,8 @@ export function RegisterForm() {
                       onClick={() =>
                         setShowConfirmPassword(!showConfirmPassword)
                       }
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white"
+                      style={{ border: "none", outline: "none", background: "none" }}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-black dark:hover:text-white cursor-pointer"
                     >
                       {showConfirmPassword ? (
                         <EyeOff className="size-3.5" />
@@ -204,7 +210,8 @@ export function RegisterForm() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full h-9 mt-1 rounded-lg border-0 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-medium transition-colors disabled:opacity-50 cursor-pointer"
+            style={{ border: "none", outline: "none", boxShadow: "none" }}
+            className="w-full h-9 mt-1 rounded-lg !border-0 !border-none !outline-none !shadow-none !ring-0 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 text-xs font-medium transition-colors disabled:opacity-50 cursor-pointer"
           >
             {isLoading ? "Creating account..." : "Create account"}
           </Button>

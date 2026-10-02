@@ -3,7 +3,10 @@ import { LoginForm } from "@/components/auth/login-form";
 
 export default function LoginPage() {
   return (
-    <div className="w-full bg-white dark:bg-black border-0 shadow-none">
+    <div
+      style={{ border: "none", outline: "none", boxShadow: "none" }}
+      className="w-full bg-white dark:bg-black !border-0 !border-none !shadow-none"
+    >
       <div className="mb-6">
         <h1 className="text-xl font-semibold tracking-tight text-black dark:text-white">
           Sign in
