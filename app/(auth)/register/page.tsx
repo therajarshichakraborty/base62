@@ -2,13 +2,13 @@ import { RegisterForm } from "@/components/auth/register-form";
 
 export default function RegisterPage() {
   return (
-    <div className="relative rounded-2xl border border-zinc-800/80 bg-zinc-900/60 p-6 sm:p-8 shadow-2xl shadow-black/80 backdrop-blur-xl before:pointer-events-none before:absolute before:inset-x-0 before:-top-px before:h-px before:bg-gradient-to-r before:from-transparent before:via-indigo-500/50 before:to-transparent">
-      <div className="mb-6 text-center">
-        <h1 className="text-2xl font-bold tracking-tight text-zinc-100 sm:text-3xl">
+    <div className="rounded-xl border border-zinc-800 bg-zinc-950 p-6 sm:p-7">
+      <div className="mb-6">
+        <h1 className="text-xl font-semibold tracking-tight text-white">
           Create an account
         </h1>
-        <p className="mt-1.5 text-xs sm:text-sm text-zinc-400">
-          Get started with Base62 link management today
+        <p className="mt-1 text-xs text-zinc-400">
+          Enter your details to get started
         </p>
       </div>
 
