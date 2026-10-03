@@ -5,8 +5,7 @@ export default function LoginPage() {
   return (
     <div
       style={{ background: "transparent", border: "none", outline: "none", boxShadow: "none" }}
-      className="w-full bg-transparent !border-0 !border-none !shadow-none"
-    >
+      className="w-full bg-transparent !border-0 !border-none !shadow-none">
       <div className="mb-6">
         <h1 className="text-xl font-semibold tracking-tight text-black dark:text-white">
           Sign in
@@ -15,8 +14,11 @@ export default function LoginPage() {
           Enter your credentials to continue
         </p>
       </div>
-
-      <Suspense fallback={<div className="py-8 text-center text-xs text-neutral-500">Loading...</div>}>
+      <Suspense fallback={
+        <div className="py-8 text-center text-xs text-neutral-500">
+          Loading...
+          </div>
+          }>
         <LoginForm />
       </Suspense>
     </div>
